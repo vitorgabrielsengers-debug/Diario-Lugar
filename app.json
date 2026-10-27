@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "Diário de Lugares",
+    "slug": "diario-de-lugares",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "O Diário de Lugares precisa da câmera para fotografar os lugares visitados.",
+          "recordAudioAndroid": false
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "O Diário de Lugares precisa da localização para registrar onde a foto foi tirada."
+        }
+      ]
+    ],
+    "android": {
+      "package": "com.diariodelugares.app"
+    },
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}

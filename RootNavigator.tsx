@@ -1,0 +1,33 @@
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../types';
+import SobreScreen from '../screens/SobreScreen';
+import TabNavigator from './TabNavigator';
+import StoreDetailScreen from '../screens/StoreDetailScreen';
+import LoginScreen from '../screens/LoginScreen';
+import { useAuth } from '../context/AuthContext';
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+export default function RootNavigator() {
+    const { user } = useAuth();
+
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                {user ? (
+                    <>
+                        <Stack.Screen name='Tabs' component={TabNavigator} options={{ headerShown: false }} />
+                        <Stack.Screen name='StoreDetail' component={StoreDetailScreen} options={{ title: 'Detalhes da Loja' }} />
+                        <Stack.Screen name='Sobre' component={SobreScreen} options={{ title: 'Sobre' }} />
+                    </>
+                ) : (
+                    <Stack.Screen name='Login' component={LoginScreen} options={{ title: 'Entrar' }} />
+                )}
+            </Stack.Navigator>
+        </NavigationContainer>
+    )
+}
+// npm install "nome do modulo"
+// npm install "@react-navigation/native"
+// npm install "@react-navigation/native-stack"
